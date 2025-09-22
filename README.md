@@ -86,6 +86,32 @@ lib/
    flutter run
    ```
 
+### Backend Configuration
+
+Before running the app, you must configure it to communicate with your local Laravel backend.
+
+1.  **Find your local IP address.** This is the IP address of the machine running the Laravel Docker container.
+    -   On **macOS / Linux**, you can use: `ifconfig | grep "inet "` or `ip a`
+    -   On **Windows**, you can use: `ipconfig`
+
+2.  **Update the configuration files.** Open the following files and replace the placeholder IP address with the one you found in step 1:
+    -   `lib/config/app_config.dart`
+    -   `lib/core/api/api_config.dart`
+
+    **Example:**
+    Change this line:
+    ```dart
+    // Before
+    static const String baseUrl = 'http://192.168.1.10:8000/api';
+    ```
+    To your local IP address:
+    ```dart
+    // After
+    static const String baseUrl = 'http://YOUR_LOCAL_IP_ADDRESS:8000/api';
+    ```
+
+    > **Important:** Your mobile device or emulator must be on the same Wi-Fi network as your computer running the backend for the connection to work.
+
 ### Testing
 
 Run the test suite:
